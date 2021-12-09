@@ -13,7 +13,7 @@ def _test_model(model, input_shape, output_sequence_length, russia_vocab_size):
         'Wrong input shape. Found input shape {} using parameter input_shape={}'.format(model.input_shape, input_shape)
 
     assert model.output_shape == (None, output_sequence_length, russia_vocab_size),\
-        'Wrong output shape. Found output shape {} using parameters output_sequence_length={} and french_vocab_size={}'\
+        'Wrong output shape. Found output shape {} using parameters output_sequence_length={} and russia_vocab_size={}'\
             .format(model.output_shape, output_sequence_length, russia_vocab_size)
 
     assert len(model.loss_functions) > 0,\
