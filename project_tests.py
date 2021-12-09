@@ -5,16 +5,16 @@ from keras.preprocessing.text import Tokenizer
 from tensorflow.keras.utils import to_categorical
 
 
-def _test_model(model, input_shape, output_sequence_length, french_vocab_size):
+def _test_model(model, input_shape, output_sequence_length, russia_vocab_size):
     if isinstance(model, Sequential):
         model = model.model
 
     assert model.input_shape == (None, *input_shape[1:]),\
         'Wrong input shape. Found input shape {} using parameter input_shape={}'.format(model.input_shape, input_shape)
 
-    assert model.output_shape == (None, output_sequence_length, french_vocab_size),\
+    assert model.output_shape == (None, output_sequence_length, russia_vocab_size),\
         'Wrong output shape. Found output shape {} using parameters output_sequence_length={} and french_vocab_size={}'\
-            .format(model.output_shape, output_sequence_length, french_vocab_size)
+            .format(model.output_shape, output_sequence_length, russia_vocab_size)
 
     assert len(model.loss_functions) > 0,\
         'No loss function set.  Apply the `compile` function to the model.'
@@ -57,47 +57,47 @@ def test_simple_model(simple_model):
     input_shape = (137861, 21, 1)
     output_sequence_length = 21
     english_vocab_size = 199
-    french_vocab_size = 344
+    russia_vocab_size = 344
 
-    model = simple_model(input_shape, output_sequence_length, english_vocab_size, french_vocab_size)
-    _test_model(model, input_shape, output_sequence_length, french_vocab_size)
+    model = simple_model(input_shape, output_sequence_length, english_vocab_size, russia_vocab_size)
+    _test_model(model, input_shape, output_sequence_length, russia_vocab_size)
 
 
 def test_embed_model(embed_model):
     input_shape = (137861, 21)
     output_sequence_length = 21
     english_vocab_size = 199
-    french_vocab_size = 344
+    russia_vocab_size = 344
 
-    model = embed_model(input_shape, output_sequence_length, english_vocab_size, french_vocab_size)
-    _test_model(model, input_shape, output_sequence_length, french_vocab_size)
+    model = embed_model(input_shape, output_sequence_length, english_vocab_size, russia_vocab_size)
+    _test_model(model, input_shape, output_sequence_length, russia_vocab_size)
 
 
 def test_encdec_model(encdec_model):
     input_shape = (137861, 15, 1)
     output_sequence_length = 21
     english_vocab_size = 199
-    french_vocab_size = 344
+    russia_vocab_size = 344
 
-    model = encdec_model(input_shape, output_sequence_length, english_vocab_size, french_vocab_size)
-    _test_model(model, input_shape, output_sequence_length, french_vocab_size)
+    model = encdec_model(input_shape, output_sequence_length, english_vocab_size, russia_vocab_size)
+    _test_model(model, input_shape, output_sequence_length, russia_vocab_size)
 
 
 def test_bd_model(bd_model):
     input_shape = (137861, 21, 1)
     output_sequence_length = 21
     english_vocab_size = 199
-    french_vocab_size = 344
+    russia_vocab_size = 344
 
-    model = bd_model(input_shape, output_sequence_length, english_vocab_size, french_vocab_size)
-    _test_model(model, input_shape, output_sequence_length, french_vocab_size)
+    model = bd_model(input_shape, output_sequence_length, english_vocab_size, russia_vocab_size)
+    _test_model(model, input_shape, output_sequence_length, russia_vocab_size)
 
 
 def test_model_final(model_final):
     input_shape = (137861, 15)
     output_sequence_length = 21
     english_vocab_size = 199
-    french_vocab_size = 344
+    russia_vocab_size = 344
 
-    model = model_final(input_shape, output_sequence_length, english_vocab_size, french_vocab_size)
-    _test_model(model, input_shape, output_sequence_length, french_vocab_size)
+    model = model_final(input_shape, output_sequence_length, english_vocab_size, russia_vocab_size)
+    _test_model(model, input_shape, output_sequence_length, russia_vocab_size)
